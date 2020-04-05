@@ -1,0 +1,18 @@
+h1,h2,h3,h4,h5,h6 {
+  color: green;
+}
+
+div .title1 {
+  color: green;
+  font-size:50px;
+}
+
+div .title2 {
+  color: blue;
+  font-size:20px;
+}
+
+.hugeButton{
+  font-size:100px;
+  color:rgb(63, 133, 17);
+}
