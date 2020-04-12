@@ -18,4 +18,5 @@ public class VideoController {
     public String listAllVideow() {
         return "hello restful";
     }
+    
 }

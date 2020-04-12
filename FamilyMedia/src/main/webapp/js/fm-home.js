@@ -3,13 +3,13 @@
 
 $(function(){
 
-    $("#btnVideo").click(function(){
+    $("#btn_video").click(function(){
         //location.assign('/FamilyMedia/html/Video.html');
         $("#stage").load("//FamilyMedia/html/Video.html");
     });
 
 
-    $("#btnMusic").click(function(){
+    $("#btn_music").click(function(){
         alert("music");
     });
         

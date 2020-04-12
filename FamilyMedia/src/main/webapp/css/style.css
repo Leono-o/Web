@@ -1,18 +1,88 @@
-h1,h2,h3,h4,h5,h6 {
-  color: green;
+div.fm-header {
+	height: 70px;
+}
+
+div.fm-logo {
+	float: left;
+}
+
+.fm-logo a {
+	text-decoration: none;
+}
+
+.fm-login {
+	position: relative;
+	float: right;
+	top: 40px;
+}
+
+ul.fm-navbar {
+	position: relative;
+	left: 100px;
+	top: 40px;
+}
+
+div.fm-context {
+	left: 30px;
+	top: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: green;
 }
 
 div .title1 {
-  color: green;
-  font-size:50px;
+	color: green;
+	font-size: 50px;
 }
 
 div .title2 {
-  color: blue;
-  font-size:20px;
+	color: blue;
+	font-size: 20px;
 }
 
-.hugeButton{
-  font-size:100px;
-  color:rgb(63, 133, 17);
+.hugeButton {
+	font-size: 100px;
+	color: rgb(63, 133, 17);
+}
+
+.fm-navbar ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+.fm-navbar a {
+	float: left;
+	width: 7em;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	background-color: purple;
+	padding: 0.2em 0.6em;
+	border-right: 1px solid white;
+}
+
+.fm-navbar a:hover {
+	cursor: pointer;
+	background-color: #ff3300;
+}
+
+li {
+	display: inline
+}
+
+#waitmask 
+{
+	display:none;
+	position: absolute;
+	top:0px;
+	left:0px;
+	width: 100%;
+	height: 100%;
+	z-index:9999;
+	background-color: black;
+	opacity: .10;
 }

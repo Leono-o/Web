@@ -1,0 +1,9 @@
+
+function freeze(){
+	
+}
+
+
+function ease(){
+	
+}
