@@ -1,8 +1,14 @@
-div.fm-header {
-	height: 70px;
+h1, h2, h3, h4, h5, h6 {
+	color: green;
 }
 
-div.fm-logo {
+div.fm-header {
+	height: 60px;
+}
+
+.fm-logo {
+	position: relative;
+	width:400px;
 	float: left;
 }
 
@@ -10,48 +16,17 @@ div.fm-logo {
 	text-decoration: none;
 }
 
-.fm-login {
+.fm-navbar {
 	position: relative;
-	float: right;
-	top: 40px;
-}
-
-ul.fm-navbar {
-	position: relative;
-	left: 100px;
-	top: 40px;
-}
-
-div.fm-context {
-	left: 30px;
-	top: 20px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	color: green;
-}
-
-div .title1 {
-	color: green;
-	font-size: 50px;
-}
-
-div .title2 {
-	color: blue;
-	font-size: 20px;
-}
-
-.hugeButton {
-	font-size: 100px;
-	color: rgb(63, 133, 17);
-}
-
-.fm-navbar ul {
 	float: left;
-	width: 100%;
-	padding: 0;
+	top: 40px;
+	padding-left: 80;
 	margin: 0;
 	list-style-type: none;
+}
+
+.fm-navbar li  {
+	display: inline
 }
 
 .fm-navbar a {
@@ -70,9 +45,34 @@ div .title2 {
 	background-color: #ff3300;
 }
 
-li {
-	display: inline
+div .fm-login {
+	position: relative;
+	float: right;
+	top: 40px;
 }
+
+div.fm-context {
+	left: 30px;
+	top: 20px;
+}
+
+
+
+div .title1 {
+	color: green;
+	font-size: 50px;
+}
+
+div .title2 {
+	color: blue;
+	font-size: 20px;
+}
+
+.hugeButton {
+	font-size: 100px;
+	color: rgb(63, 133, 17);
+}
+
 
 #waitmask 
 {
