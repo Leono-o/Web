@@ -3,7 +3,7 @@
 
 function makeJlist(obj, res, layout) {
 
-	loadcss("js/lib/J-list.css");
+	//loadcss("js/lib/J-list.css");
 	
 	obj.innerHTML = "";
 
