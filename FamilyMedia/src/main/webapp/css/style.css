@@ -45,6 +45,11 @@ div.fm-header {
 	background-color: #ff3300;
 }
 
+.fm-navbar .selected
+{
+	background-color: #00d9d9;
+}
+
 div .fm-login {
 	position: relative;
 	float: right;
@@ -85,4 +90,10 @@ div .title2 {
 	z-index:9999;
 	background-color: black;
 	opacity: .10;
+}
+
+#iframe-context 
+{
+	width: 100%;
+	height: calc(100%-60px);
 }

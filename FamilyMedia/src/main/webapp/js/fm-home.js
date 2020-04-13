@@ -4,13 +4,18 @@
 $(function(){
 
     $("#btn_video").click(function(){
-        //location.assign('/FamilyMedia/html/Video.html');
-        $("#stage").load("//FamilyMedia/html/Video.html");
+    	$("#btn_video").addClass("selected");
+    	$("#btn_music").removeClass("selected");
+   	 	
+        $("#fm-context").load("video.html");
     });
 
 
     $("#btn_music").click(function(){
-        alert("music");
+    	$("#btn_video").removeClass("selected");
+    	$("#btn_music").addClass("selected");
+    	
+    	$("#fm-context").load("music.html");
     });
         
 });

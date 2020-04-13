@@ -1,9 +1,13 @@
 package com.hotmail.ch.leon.familymedia.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hotmail.ch.leon.familymedia.bean.MusicBean;
+import com.hotmail.ch.leon.familymedia.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.facade.MusicFacade;
 
 
@@ -12,10 +16,12 @@ public class MusicController {
 
 
     @RequestMapping(value="/music", method=RequestMethod.GET)
-    public String listAll() {
-    	//MusicFacade ms = new MusicFacade();
-    	//ms.getList();
-    	return "ss";
+    public ResponseBean listAll() {
+    	List<MusicBean> resultBeans = MusicFacade.getList();
+    	ResponseBean result = new ResponseBean();
+    	result.setData(resultBeans);
+    	result.setStatus("400");
+    	return result;
     }
 
     @RequestMapping(value="/music", method=RequestMethod.POST)
