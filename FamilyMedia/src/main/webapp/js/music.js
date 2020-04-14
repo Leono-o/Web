@@ -1,5 +1,5 @@
 
-var layout =   [
+let layout =   [
 			  { "name":"id",  "field":"id", "format":"", "display":"false" },
 			  { "name":"ftype",  "field":"ftype", "format":"", "display":"true" },
 			  { "name":"fname",  "field":"fname", "format":"", "display":"true" },			  

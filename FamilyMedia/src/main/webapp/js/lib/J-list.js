@@ -7,11 +7,11 @@ function makeJlist(obj, res, layout) {
 	
 	obj.innerHTML = "";
 
-	var txt = "";
+	let txt = "";
 
 	res.forEach(function(rv,ri,ra) {
 
-		var row = "";
+		let row = "";
 		layout.forEach(function(lv,li,la) {
 			if (lv["display"] === "true"){
 				row = row

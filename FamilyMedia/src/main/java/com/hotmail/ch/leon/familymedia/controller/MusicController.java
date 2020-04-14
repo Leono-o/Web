@@ -20,7 +20,7 @@ public class MusicController {
     	List<MusicBean> resultBeans = MusicFacade.getList();
     	ResponseBean result = new ResponseBean();
     	result.setData(resultBeans);
-    	result.setStatus("400");
+    	result.setStatus("200");
     	return result;
     }
 
