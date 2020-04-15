@@ -21,12 +21,3 @@ $(function(){
    
 });
 
-$(document).ready(function(){
-	// 窗口大小改变时
-	$(window).resize(function() {
-		$("body").css("--window-height","" + $(window).height() + "px");
-    	//$("#fm-context").css("height","calc(var(--window-height) - var(--header-height))");
-	});
-
-});
-

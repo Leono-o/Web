@@ -1,7 +1,11 @@
+
+html, body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
-	--window-height:900px;
-	--header-height:60px;
-	
 	overflow:hidden;
 }
 
@@ -10,7 +14,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 div.fm-header {
-	height: var(--header-height);
+	height: 60px;
+	width:100%;
 }
 
 .fm-header hr{
@@ -69,13 +74,13 @@ div .fm-login {
 
 
 #fm-context {
-	left: 30px;
-	top: 20px;
-	height: calc(var(--window-height) - var(--header-height));
-	background-color: #00d9d9;
 	overflow:auto;
+	width:100%;
+	position: absolute;
+    top: 80px;
+    bottom: 0px;
+    left: 0px;
 }
-
 
 div .title1 {
 	color: green;
@@ -105,4 +110,3 @@ div .title2 {
 	background-color: black;
 	opacity: .10;
 }
-

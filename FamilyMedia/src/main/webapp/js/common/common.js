@@ -25,3 +25,11 @@ function request(method, uil, obj, func) {
 	    }
 	});
 }
+
+function getCssVal($ele, name ){
+	return getComputedStyle($ele[0]).getPropertyValue(name).trim();
+}
+
+function setCssVal($ele, name , val){
+	$ele[0].style.setProperty(name,val);
+}
