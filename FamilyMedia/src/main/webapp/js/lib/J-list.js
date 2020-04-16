@@ -1,7 +1,14 @@
 
 
-
-function makeJlist(obj, res, layout) {
+/**
+ * 生成列表
+ * 
+ * @param obj
+ * @param res
+ * @param jlistParam
+ * @returns
+ */
+function makeJlist(obj, res, jlistParam) {
 
 	//loadcss("js/lib/J-list.css");
 	
@@ -12,7 +19,7 @@ function makeJlist(obj, res, layout) {
 	res.forEach(function(rv,ri,ra) {
 
 		let row = "";
-		layout.forEach(function(lv,li,la) {
+		jlistParam.layout.forEach(function(lv,li,la) {
 			if (lv["display"] === "true"){
 				row = row
 				+ makeString('<div name="{$0}">{$1}</div>', [lv["name"], rv[lv["field"]] ]);
@@ -27,13 +34,14 @@ function makeJlist(obj, res, layout) {
 
 	obj.innerHTML = txt;
 
-};
-
-
-function makeString(stringformat, valueArray) {
-	valueArray.forEach(function(v, i) {
-		stringformat = stringformat.replace("{$" + i + "}", v);
-	});
+	// 全部变成非选择状态
+	$(obj).children(".Jlist_row").removeClass("selected");
 	
-	return stringformat;
-}
+	// [单击]
+	$(obj).children(".Jlist_row").click(function(){
+		
+		// 使被单击的选项变成选中状态
+		$(obj).children(".Jlist_row").removeClass("selected");
+		$(this).addClass("selected");
+	});
+};

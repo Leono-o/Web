@@ -33,3 +33,20 @@ function getCssVal($ele, name ){
 function setCssVal($ele, name , val){
 	$ele[0].style.setProperty(name,val);
 }
+
+
+
+/**
+ * 格式化字符串 </br>
+ * 将原字符串中的{$0},{$1}等置换成对应数组中的字符串
+ * @param stringformat
+ * @param valueArray
+ * @returns
+ */
+function makeString(stringformat, valueArray) {
+	valueArray.forEach(function(v, i) {
+		stringformat = stringformat.replace("{$" + i + "}", v);
+	});
+	
+	return stringformat;
+}
