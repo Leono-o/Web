@@ -47,7 +47,7 @@ public class MusicController {
     	
 		// 设置响应头和客户端保存文件名
 		response.setCharacterEncoding("utf-8");
-		response.setContentType("multipart/form-data");
+		response.setContentType("audio/mp3");
 		response.setHeader("Content-Disposition", "attachment;fileName=" + finfo.getDispname());
 
 		InputStream inputStream = null;
