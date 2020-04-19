@@ -105,6 +105,16 @@
             <param-value>UTF-8</param-value>
         </init-param>
     </filter>
+    
+    <filter>
+    	<filter-name>AuthenticationFilter</filter-name>
+    	<filter-class>com.hotmail.ch.leon.familymedia.filter.AuthenticationFilter</filter-class>
+    	<init-param>
+    		<param-name>skip</param-name>
+    		<param-value>false</param-value>
+    	</init-param>
+    	
+    </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
