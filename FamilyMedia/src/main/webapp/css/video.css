@@ -1,0 +1,38 @@
+
+#music-context {
+	
+	width:calc(100%-15px);
+	padding-left:15px;
+}
+
+.Jlist_row [name="ftype"]{
+	position:relative;
+	float:left;
+	width:50px;
+	height:30px;
+}
+
+.Jlist_row [name="fname"]{
+	position:relative;
+	float:left;
+	margin-left:10px;
+	height:40px;
+}
+
+.Jlist_row [name="size"]{
+	position:relative;
+	float:left;
+	margin-left:10px;
+}
+
+.Jlist_row [name="cmt"]{
+	position:relative;
+	float:left;
+	margin-left:10px;
+}
+
+#video-context video {
+	position: fixed;
+	left: 600px;
+	top: 100px;
+}

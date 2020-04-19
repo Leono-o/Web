@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hotmail.ch.leon.familymedia.bean.MusicBean;
+import com.hotmail.ch.leon.familymedia.bean.VideoBean;
 
-public class MusicFacade {
+public class VideoFacade {
 
-	public static  List<MusicBean> getList() {
-		List<MusicBean> result = new ArrayList<MusicBean>();
-		MusicBean mb = new MusicBean();
-		mb.setId("111");
+	public static  List<VideoBean> getList() {
+		List<VideoBean> result = new ArrayList<VideoBean>();
+		VideoBean mb = new VideoBean();
+		mb.setId("121");
 		mb.setFname("音乐1");
-		mb.setFtype("mp3");
+		mb.setFtype("mp4");
 		mb.setSize(15621);
 		mb.setCmt("uwav53hvu3hu6y");
 		result.add(mb);
 		
 		for (int i=0; i<30;i++) {
-		mb = new MusicBean();
+		mb = new VideoBean();
 		mb.setId("222");
 		mb.setFname("音乐2");
 		mb.setFtype("mp3");

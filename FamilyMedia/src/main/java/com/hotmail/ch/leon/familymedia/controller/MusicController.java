@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hotmail.ch.leon.familymedia.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.bean.ResponseBean;
+import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
 import com.hotmail.ch.leon.familymedia.facade.MusicFacade;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
@@ -48,7 +48,7 @@ public class MusicController {
 		// 设置响应头和客户端保存文件名
     	response.setStatus(200);
 		response.setCharacterEncoding("utf-8");
-		response.setContentType("audio/mp3");
+		response.setContentType(ContentType.typeOf(finfo.getFileType()));
 		response.setHeader("Accept-Ranges","bytes");
 		response.setHeader("Content-Disposition", "attachment;fileName=" + finfo.getDispname());
 
