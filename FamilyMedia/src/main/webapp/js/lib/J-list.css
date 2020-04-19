@@ -1,0 +1,16 @@
+
+/* 行  */
+.Jlist_row
+{
+	height:50px;
+	font-size:20px;
+	
+}
+
+/* 选中行  */
+.Jlist_row.selected
+{
+	background-color: #00d9d9;
+}
+
+
