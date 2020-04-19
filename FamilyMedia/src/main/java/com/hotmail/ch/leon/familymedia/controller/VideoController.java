@@ -1,10 +1,5 @@
 package com.hotmail.ch.leon.familymedia.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hotmail.ch.leon.familymedia.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.bean.VideoBean;
+import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
+import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
 import com.hotmail.ch.leon.familymedia.facade.VideoFacade;
@@ -45,54 +42,13 @@ public class VideoController {
     		return;
     	}
     	
-		// 设置响应头和客户端保存文件名
-    	response.setStatus(200);
-		response.setCharacterEncoding("utf-8");
-		response.setContentType(ContentType.typeOf(finfo.getFileType()));
-		response.setHeader("Accept-Ranges","bytes");
-		response.setHeader("Content-Disposition", "attachment;fileName=" + finfo.getDispname());
-
-		InputStream inputStream = null;
-		OutputStream os = null;
-		try {
-			// 打开本地文件流
-			File file = new File(finfo.getLocalpath());
-			response.setHeader("'Content-Range","bytes 0-" + String.valueOf(file.length())); 
-			response.addHeader("Content-Length", String.valueOf(file.length())); 
-			
-			inputStream = new FileInputStream(file);
-			// 激活下载操作
-			os = response.getOutputStream();
-
-			// 循环写入输出流
-			byte[] b = new byte[2048];
-			int length;
-			while ((length = inputStream.read(b)) > 0) {
-				os.write(b, 0, length);
-			}
-
-		} catch (IOException e) {
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			// 这里主要关闭。
-			if (os != null) {
-				try {
-					os.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-			if (inputStream != null) {
-				try {
-					inputStream.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+    	DownloadDTO downloadDTO = new DownloadDTO();
+    	downloadDTO.setUrl(finfo.getLocalpath());
+    	downloadDTO.setSaveAs(finfo.getDispname());
+    	downloadDTO.setContentType(ContentType.typeOf(finfo.getFileType()));
+    	downloadDTO.setFirstpackageSz(5*1024*1024);
+    	
+		DownloadLogic.execute(downloadDTO, request, response);
     }
     
 }

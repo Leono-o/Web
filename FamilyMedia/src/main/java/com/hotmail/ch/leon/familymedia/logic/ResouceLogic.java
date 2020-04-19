@@ -10,7 +10,7 @@ public class ResouceLogic {
 			return new FileInfoDTO("S:/H/H/EVN5WO327.mp4", "aa.mp4",ContentType.MP4.value());
 			//
 		} else {
-			return new FileInfoDTO("D:/eclipse-workspace/Web/Resource/sample/02-花.mp3","02-花.mp3",ContentType.MP3.value());
+			return new FileInfoDTO("V:/music/山口百惠/ありがとうあなた.mp3","ありがとうあなた.mp3",ContentType.MP3.value());
 		}
 	}
 	

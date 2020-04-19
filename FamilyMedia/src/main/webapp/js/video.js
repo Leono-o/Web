@@ -30,6 +30,5 @@ function showList(res, success){
 
 		let uri=makeString("/FamilyMedia/video/{$0}" , [$(this).children("[name='id']").first().val()]);
 		$("#video-payer")[0].src = uri;
-		$("#video-payer")[0].play();
 	});
 }
