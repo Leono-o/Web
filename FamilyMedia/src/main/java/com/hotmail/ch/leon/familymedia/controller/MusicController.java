@@ -46,8 +46,10 @@ public class MusicController {
     	}
     	
 		// 设置响应头和客户端保存文件名
+    	response.setStatus(200);
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("audio/mp3");
+		response.setHeader("Accept-Ranges","bytes");
 		response.setHeader("Content-Disposition", "attachment;fileName=" + finfo.getDispname());
 
 		InputStream inputStream = null;
@@ -55,6 +57,9 @@ public class MusicController {
 		try {
 			// 打开本地文件流
 			File file = new File(finfo.getLocalpath());
+			response.setHeader("'Content-Range","bytes 0-" + String.valueOf(file.length())); 
+			response.addHeader("Content-Length", String.valueOf(file.length())); 
+			
 			inputStream = new FileInputStream(file);
 			// 激活下载操作
 			os = response.getOutputStream();
