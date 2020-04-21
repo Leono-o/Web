@@ -15,7 +15,43 @@
         http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
 
 
-    <!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
-    
+	<!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
+	
+    <!-- 
+    <context:property-placeholder location="D:/eclipse-workspace/Web/db.properties" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="maxActive" value="100"></property>
+        <property name="minIdle" value="20"></property>
+        <property name="maxWait" value="3000"></property>
+        <property name="initialSize" value="30"></property>
+    </bean>
 
+   -->
+   
+ 	<context:property-placeholder location="file:D:/eclipse-workspace/Web/db.properties" />
+ 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="maxActive" value="100"></property>
+        <property name="minIdle" value="20"></property>
+        <property name="maxWait" value="3000"></property>
+        <property name="initialSize" value="30"></property>
+    </bean>
+
+  
+    <!--扫描注解-->
+    <context:component-scan base-package="com.hotmail.ch.leon.familymedia.dao.impl"/>
+ 
+    <!-- 2. 创建JdbcTemplate对象 -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
 </beans>

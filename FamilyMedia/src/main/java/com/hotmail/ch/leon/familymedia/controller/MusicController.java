@@ -1,10 +1,5 @@
 package com.hotmail.ch.leon.familymedia.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +17,7 @@ import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
+import com.hotmail.ch.leon.familymedia.facade.FacadeFactory;
 import com.hotmail.ch.leon.familymedia.facade.MusicFacade;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
 
@@ -32,7 +28,8 @@ public class MusicController {
 
     @RequestMapping(value="/music", method=RequestMethod.GET)
     public ResponseBean listAll() {
-    	List<MusicBean> resultBeans = MusicFacade.getList();
+    	MusicFacade facade = FacadeFactory.getFacade(MusicFacade.class);
+    	List<MusicBean> resultBeans = facade.getList();
     	ResponseBean result = new ResponseBean();
     	result.setData(resultBeans);
     	result.setStatus("200");
