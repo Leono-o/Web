@@ -6,18 +6,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class FacadeFactory {
 	
-	private static ApplicationContext _Contex = null;
+	private static ApplicationContext _contex = null;
 	
 	private static ApplicationContext getApplicationContextInstance() {
-		if (_Contex == null) {
-			_Contex = new ClassPathXmlApplicationContext("/facadeContext.xml", Main.class);
+		if (_contex == null) {
+
+			_contex = (ApplicationContext)new ClassPathXmlApplicationContext("/beanRefContext.xml", Main.class).getBean("context");
 		}
-		return _Contex;
+		return _contex;
 	}
 	
 
 	public static  <T> T getFacade(Class <T> requiredType) {
-		return getApplicationContextInstance().getBean(requiredType);
+		//return getApplicationContextInstance().getBean(requiredType);
+		return (T)getApplicationContextInstance().getBean("facade.MusicFacade");
+		
 	}
 	
 
