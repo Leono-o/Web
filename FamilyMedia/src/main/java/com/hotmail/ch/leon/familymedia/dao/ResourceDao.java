@@ -5,6 +5,8 @@ import java.util.List;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
 
 public interface ResourceDao  {
-	public List<ResourceDTO> findList() ;
+	public List<ResourceDTO> findList(String owner) ;
+	
+	public ResourceDTO find(long id) ;
 
 }

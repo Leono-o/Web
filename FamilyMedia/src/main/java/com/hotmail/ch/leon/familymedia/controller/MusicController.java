@@ -17,8 +17,8 @@ import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
-import com.hotmail.ch.leon.familymedia.facade.FacadeFactory;
 import com.hotmail.ch.leon.familymedia.facade.MusicFacade;
+import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
 
 
@@ -28,7 +28,7 @@ public class MusicController {
 
     @RequestMapping(value="/music", method=RequestMethod.GET)
     public ResponseBean listAll() {
-    	MusicFacade facade = FacadeFactory.getFacade(MusicFacade.class);
+    	MusicFacade facade = FmBeanFactory.getFacade(MusicFacade.class);
     	List<MusicBean> resultBeans = facade.getList();
     	ResponseBean result = new ResponseBean();
     	result.setData(resultBeans);

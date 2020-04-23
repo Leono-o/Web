@@ -153,13 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="FamilyMedia" path="/FamilyMedia" reloadable="true" source="org.eclipse.jst.jee.server:FamilyMedia"/>
-      		<Resource name="jdbc/family" auth="Container"
-      			type="javax.sql.DataSource" maxActive="100" maxIdel="30" maxWait="10000"
-      			username="family" password="password"
-      			driverClassName="oracle.jdbc.driver.OracleDriver"
-      			url="jdbc:oracle:thin:@192.168.1.100:1521:family"
-      		/>
+      <Context docBase="FamilyMedia" path="/FamilyMedia" reloadable="true" source="org.eclipse.jst.jee.server:FamilyMedia" />
       
       </Host>
     </Engine>

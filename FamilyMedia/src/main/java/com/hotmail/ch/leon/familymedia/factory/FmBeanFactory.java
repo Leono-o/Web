@@ -1,10 +1,10 @@
-package com.hotmail.ch.leon.familymedia.facade;
+package com.hotmail.ch.leon.familymedia.factory;
 
 import org.apache.log4j.chainsaw.Main;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class FacadeFactory {
+public class FmBeanFactory {
 	
 	private static ApplicationContext _contex = null;
 	
@@ -18,10 +18,12 @@ public class FacadeFactory {
 	
 
 	public static  <T> T getFacade(Class <T> requiredType) {
-		//return getApplicationContextInstance().getBean(requiredType);
-		return (T)getApplicationContextInstance().getBean("facade.MusicFacade");
+		return (T)getApplicationContextInstance().getBean("facade."+ requiredType.getSimpleName());
 		
 	}
 	
 
+	public static  <T> T getDao(Class <T> requiredType)  {
+		return (T)getApplicationContextInstance().getBean("dao."+ requiredType.getSimpleName());
+	}
 }
