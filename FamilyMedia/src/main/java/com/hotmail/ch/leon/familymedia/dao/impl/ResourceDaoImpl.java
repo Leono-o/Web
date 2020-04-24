@@ -1,8 +1,10 @@
 package com.hotmail.ch.leon.familymedia.dao.impl;
 
+import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,6 +12,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.hotmail.ch.leon.familymedia.dao.ResourceDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
+import com.hotmail.ch.leon.familymedia.utils.FmStringUtil;
 
 public class ResourceDaoImpl  implements  ResourceDao {
 
@@ -37,7 +40,7 @@ public class ResourceDaoImpl  implements  ResourceDao {
                 return dto;
             }
  
-        },owner);
+        },FmStringUtil.appendSpace(owner,20));
         
         
         return query;
@@ -45,8 +48,18 @@ public class ResourceDaoImpl  implements  ResourceDao {
 
 	@Override
 	public ResourceDTO find(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select id, name , url, owner, gname from T_resource where id=?";
+		Map<String, Object> map = template.queryForMap(sql, id);
+
+		ResourceDTO dto = new ResourceDTO();
+		dto.setId(((BigDecimal) map.get("id")).longValue());
+		dto.setName((String) map.get("name"));
+		dto.setUrl((String) map.get("url"));
+		dto.setOwner((String) map.get("owner"));
+		dto.setGname((String) map.get("gname"));
+
+		return dto;
+
 	}
 	
 

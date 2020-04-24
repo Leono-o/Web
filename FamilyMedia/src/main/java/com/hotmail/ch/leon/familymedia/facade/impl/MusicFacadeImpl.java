@@ -14,7 +14,7 @@ public class MusicFacadeImpl implements MusicFacade {
 	public  List<MusicBean> getList() {
 		
 		ResourceDao dao = FmBeanFactory.getDao(ResourceDao.class);
-		List<ResourceDTO> resourceDTOList = dao.findList("leon                ");
+		List<ResourceDTO> resourceDTOList = dao.findList("leon");
 		
 		List<MusicBean> result = new ArrayList<MusicBean>();
 		for (ResourceDTO dto : resourceDTOList) {

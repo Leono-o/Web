@@ -13,7 +13,7 @@ public class ResouceLogic {
 		ResourceDao dao = FmBeanFactory.getDao(ResourceDao.class);
 		ResourceDTO resourceDTO = dao.find(Long.valueOf(id));
 
-		return new FileInfoDTO("V:/music/山口百惠/ありがとうあなた.mp3","ありがとうあなた.mp3",ContentType.MP3.value());
+		return new FileInfoDTO(resourceDTO.getUrl(),resourceDTO.getName(),ContentType.MP4.value());
 
 	}
 
