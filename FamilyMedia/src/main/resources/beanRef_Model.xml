@@ -16,7 +16,7 @@
 
 
 	<!-- 启用注解扫描，并定义组件查找规则 ，除了@controller，扫描所有的Bean -->
-	<context:component-scan base-package="com.hotmail.ch.leon.familymedia.model.impl"></context:component-scan>
+	<context:component-scan base-package="com.hotmail.ch.leon.familymedia.mvc.model.impl"></context:component-scan>
 	
 	<!-- 事务管理器 -->
 	<bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -25,9 +25,9 @@
     </bean>
     
     <!-- Facade 声明 -->
-	<bean id="model.MusicFacade" class="com.hotmail.ch.leon.familymedia.model.impl.MusicModelImpl" />
+	<bean id="model.MusicModel" class="com.hotmail.ch.leon.familymedia.mvc.model.impl.MusicModelImpl" />
 	
-	<bean id="model.VideoFacade" class="com.hotmail.ch.leon.familymedia.model.impl.VideoModelImpl" />
+	<bean id="model.VideoModel" class="com.hotmail.ch.leon.familymedia.mvc.model.impl.VideoModelImpl" />
 	
     
 </beans>

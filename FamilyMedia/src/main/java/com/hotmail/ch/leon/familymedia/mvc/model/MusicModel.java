@@ -6,7 +6,7 @@ import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
 
 public interface  MusicModel  {
 
-	public  List<MusicBean> getList() ;
+	public  List<MusicBean> getList(String userName, String folderid) ;
 
 	public  MusicBean add();
 

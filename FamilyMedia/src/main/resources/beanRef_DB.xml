@@ -37,6 +37,8 @@
     <context:component-scan base-package="com.hotmail.ch.leon.familymedia.dao.impl"/>
     
     <!-- DAO 声明 -->
-    <bean id="dao.ResourceDao" class="com.hotmail.ch.leon.familymedia.dao.impl.ResourceDaoImpl"  />
+    <bean id="dao.GroupDao" class="com.hotmail.ch.leon.familymedia.dao.impl.GroupDaoImpl"  />
+    <bean id="dao.FolderDao" class="com.hotmail.ch.leon.familymedia.dao.impl.FolderDaoImpl"  />
+    <bean id="dao.FileDao" class="com.hotmail.ch.leon.familymedia.dao.impl.FileDaoImpl"  />
     
 </beans>

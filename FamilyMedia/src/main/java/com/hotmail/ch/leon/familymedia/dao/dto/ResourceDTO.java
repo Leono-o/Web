@@ -1,15 +1,19 @@
 package com.hotmail.ch.leon.familymedia.dao.dto;
 
+import java.math.BigDecimal;
+
 public class ResourceDTO {
-private long  id = 0;
+	
+private BigDecimal  id = null;
 private String name  = "";
-private String  url ="";
-private String owner = "";
-private String gname ="";
-public long getId() {
+private String rtype ="";
+private String cmt ="";
+
+
+public BigDecimal getId() {
 	return id;
 }
-public void setId(long id) {
+public void setId(BigDecimal id) {
 	this.id = id;
 }
 public String getName() {
@@ -18,23 +22,17 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-public String getUrl() {
-	return url;
+public String getRtype() {
+	return rtype;
 }
-public void setUrl(String url) {
-	this.url = url;
+public void setRtype(String rtype) {
+	this.rtype = rtype;
 }
-public String getOwner() {
-	return owner;
+public String getCmt() {
+	return cmt;
 }
-public void setOwner(String owner) {
-	this.owner = owner;
-}
-public String getGname() {
-	return gname;
-}
-public void setGname(String gname) {
-	this.gname = gname;
+public void setCmt(String cmt) {
+	this.cmt = cmt;
 }
 
 }

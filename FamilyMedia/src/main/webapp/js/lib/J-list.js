@@ -29,19 +29,9 @@ function makeJlist(obj, res, jlistParam) {
 			}
 		});
 
-		txt = txt + '<div class="Jlist_row">' + row + "</div>";
+		txt = txt + '<div class="Jlist_row">' + row + "<div name='children'></div></div>";
 	});
 
 	obj.innerHTML = txt;
 
-	// 全部变成非选择状态
-	$(obj).children(".Jlist_row").removeClass("selected");
-	
-	// [单击]
-	$(obj).children(".Jlist_row").click(function(){
-		
-		// 使被单击的选项变成选中状态
-		$(obj).children(".Jlist_row").removeClass("selected");
-		$(this).addClass("selected");
-	});
 };

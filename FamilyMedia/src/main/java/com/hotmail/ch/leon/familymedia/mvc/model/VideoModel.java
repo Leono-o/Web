@@ -6,7 +6,7 @@ import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
 
 public interface VideoModel {
 
-	public  List<VideoBean> getList() ;
+	public  List<VideoBean> getList(String userName, String folderid) ;
 
 	public VideoBean add() ;
 

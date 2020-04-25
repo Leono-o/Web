@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
@@ -27,9 +28,11 @@ public class MusicController {
 
 
     @RequestMapping(value="/music", method=RequestMethod.GET)
-    public ResponseBean listAll() {
+    public ResponseBean listAll(
+    		@RequestParam(value = "user", required = true) String user,
+			@RequestParam(value = "folderid", required = false) String folderid) {
     	MusicModel model = FmBeanFactory.getModel(MusicModel.class);
-    	List<MusicBean> resultBeans = model.getList();
+    	List<MusicBean> resultBeans = model.getList(user, folderid);
     	ResponseBean result = new ResponseBean();
     	result.setData(resultBeans);
     	result.setStatus("200");

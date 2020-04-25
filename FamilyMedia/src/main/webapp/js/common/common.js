@@ -7,7 +7,7 @@ function ease() {
 }
 
 
-function request(method, uil, obj, func) {
+function request(method, uil, obj, func, ele) {
 	$.ajax({
 	    async: false, //同步false
 	    type: method,
@@ -18,10 +18,10 @@ function request(method, uil, obj, func) {
 	        object: JSON.stringify(obj)
 	    },
 	    success: function (result) {
-	    	func(result , true);
+	    	func(ele,result , true);
 	    },
 	    error: function (result) {
-	    	func(result, false);
+	    	func(ele,result, false);
 	    }
 	});
 }

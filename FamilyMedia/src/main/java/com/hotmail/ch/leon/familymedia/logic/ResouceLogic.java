@@ -1,19 +1,23 @@
 package com.hotmail.ch.leon.familymedia.logic;
 
-import com.hotmail.ch.leon.familymedia.consts.ContentType;
-import com.hotmail.ch.leon.familymedia.dao.ResourceDao;
-import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
+import java.math.BigDecimal;
+
+import com.hotmail.ch.leon.familymedia.dao.FileDao;
+import com.hotmail.ch.leon.familymedia.dao.FolderDao;
+import com.hotmail.ch.leon.familymedia.dao.dto.FileDTO;
+import com.hotmail.ch.leon.familymedia.dao.dto.FolderDTO;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
-import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
+import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 
 public class ResouceLogic {
 	public static FileInfoDTO getFileInfo(String id) {
+		FileDao dao = FmBeanFactory.getDao(FileDao.class);
+		FileDTO fileDTO = dao.findByid(new BigDecimal(id));
+		
+		FolderDao folderDao = FmBeanFactory.getDao(FolderDao.class);
+		FolderDTO folderDTO = folderDao.findByid(fileDTO.getFolder());
 
-
-		ResourceDao dao = FmBeanFactory.getDao(ResourceDao.class);
-		ResourceDTO resourceDTO = dao.find(Long.valueOf(id));
-
-		return new FileInfoDTO(resourceDTO.getUrl(),resourceDTO.getName(),ContentType.MP4.value());
+		return new FileInfoDTO(folderDTO.getUrl() + "/" + fileDTO.getUrl(), fileDTO.getName(), fileDTO.getFtype());
 
 	}
 

@@ -11,4 +11,11 @@ public class FmStringUtil {
         return sb.substring(0, len);
 		
 	}
+	
+	public static String trim(String value) {
+		if (value != null) {
+			return value.trim();
+		}
+		return null;
+	}
 }

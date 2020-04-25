@@ -18,7 +18,7 @@ public class FmBeanFactory {
 	
 
 	public static  <T> T getModel(Class <T> requiredType) {
-		return (T)getApplicationContextInstance().getBean("facade."+ requiredType.getSimpleName());
+		return (T)getApplicationContextInstance().getBean("model."+ requiredType.getSimpleName());
 		
 	}
 	
