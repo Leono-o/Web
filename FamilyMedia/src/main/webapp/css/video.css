@@ -1,9 +1,23 @@
-
-#music-context {
-	
-	width:calc(100%-15px);
-	padding-left:15px;
+#video-context{
+	display: flex;
+	flex-direction: column;
+	flex:1;
 }
+
+#video-context video {
+	width: calc(100% - 10px);
+	margin-left:5px;
+	max-height:50%;
+}
+
+#Jlist {
+	overflow:scroll;
+	width:100%;
+    left: 0px;
+    margin-top:30px;
+    flex:1;
+}
+
 
 .Jlist_row [name="ftype"]{
 	position:relative;
@@ -31,8 +45,3 @@
 	margin-left:10px;
 }
 
-#video-context video {
-	position: fixed;
-	left: 600px;
-	top: 100px;
-}
