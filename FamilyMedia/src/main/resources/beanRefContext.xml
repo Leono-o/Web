@@ -5,7 +5,7 @@
 		<constructor-arg>
 			<list>
 				<value>beanRef_DB.xml</value>
-				<value>beanRef_Facade.xml</value>
+				<value>beanRef_Model.xml</value>
 			</list>
 		</constructor-arg>
 	</bean>

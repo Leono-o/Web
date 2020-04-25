@@ -1,10 +1,10 @@
-package com.hotmail.ch.leon.familymedia.facade;
+package com.hotmail.ch.leon.familymedia.model;
 
 import java.util.List;
 
 import com.hotmail.ch.leon.familymedia.bean.MusicBean;
 
-public interface  MusicFacade  {
+public interface  MusicModel  {
 
 	public  List<MusicBean> getList() ;
 

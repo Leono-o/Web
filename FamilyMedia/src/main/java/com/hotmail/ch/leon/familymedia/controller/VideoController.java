@@ -17,9 +17,9 @@ import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
-import com.hotmail.ch.leon.familymedia.facade.VideoFacade;
 import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
+import com.hotmail.ch.leon.familymedia.model.VideoModel;
 
 
 @RestController
@@ -28,8 +28,8 @@ public class VideoController {
 
 	@RequestMapping(value="/video", method=RequestMethod.GET)
     public ResponseBean listAll() {
-		VideoFacade facade = FmBeanFactory.getFacade(VideoFacade.class);
-    	List<VideoBean> resultBeans = facade.getList();
+		VideoModel model = FmBeanFactory.getModel(VideoModel.class);
+    	List<VideoBean> resultBeans = model.getList();
     	ResponseBean result = new ResponseBean();
     	result.setData(resultBeans);
     	result.setStatus("200");

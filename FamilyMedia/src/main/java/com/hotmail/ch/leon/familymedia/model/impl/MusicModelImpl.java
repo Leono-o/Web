@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.facade.impl;
+package com.hotmail.ch.leon.familymedia.model.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import com.hotmail.ch.leon.familymedia.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.dao.ResourceDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
-import com.hotmail.ch.leon.familymedia.facade.MusicFacade;
 import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
+import com.hotmail.ch.leon.familymedia.model.MusicModel;
 
-public class MusicFacadeImpl implements MusicFacade {
+public class MusicModelImpl implements MusicModel{
 
 	public  List<MusicBean> getList() {
 		

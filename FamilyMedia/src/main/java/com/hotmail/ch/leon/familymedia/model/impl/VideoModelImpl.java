@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.facade.impl;
+package com.hotmail.ch.leon.familymedia.model.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +6,14 @@ import java.util.List;
 import com.hotmail.ch.leon.familymedia.bean.VideoBean;
 import com.hotmail.ch.leon.familymedia.dao.ResourceDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
-import com.hotmail.ch.leon.familymedia.facade.VideoFacade;
 import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
+import com.hotmail.ch.leon.familymedia.model.VideoModel;
 
-public class VideoFacadeImpl implements VideoFacade {
+public class VideoModelImpl implements VideoModel {
 
 	public  List<VideoBean> getList() {
 		ResourceDao dao = FmBeanFactory.getDao(ResourceDao.class);
-		List<ResourceDTO> resourceDTOList = dao.findList("leon                ");
+		List<ResourceDTO> resourceDTOList = dao.findList("leon ");
 		
 		List<VideoBean> result = new ArrayList<VideoBean>();
 		for (ResourceDTO dto : resourceDTOList) {
