@@ -1,13 +1,13 @@
-package com.hotmail.ch.leon.familymedia.model.impl;
+package com.hotmail.ch.leon.familymedia.mvc.model.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hotmail.ch.leon.familymedia.bean.VideoBean;
 import com.hotmail.ch.leon.familymedia.dao.ResourceDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
-import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
-import com.hotmail.ch.leon.familymedia.model.VideoModel;
+import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
+import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
+import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 
 public class VideoModelImpl implements VideoModel {
 

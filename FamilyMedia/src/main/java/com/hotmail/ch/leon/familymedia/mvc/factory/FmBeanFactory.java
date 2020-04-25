@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.factory;
+package com.hotmail.ch.leon.familymedia.mvc.factory;
 
 import org.apache.log4j.chainsaw.Main;
 import org.springframework.context.ApplicationContext;

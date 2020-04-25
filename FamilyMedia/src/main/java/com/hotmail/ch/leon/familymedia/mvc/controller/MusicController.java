@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.controller;
+package com.hotmail.ch.leon.familymedia.mvc.controller;
 
 import java.util.List;
 
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hotmail.ch.leon.familymedia.bean.MusicBean;
-import com.hotmail.ch.leon.familymedia.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
-import com.hotmail.ch.leon.familymedia.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
-import com.hotmail.ch.leon.familymedia.model.MusicModel;
+import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
+import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
+import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
+import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
 
 
 @RestController

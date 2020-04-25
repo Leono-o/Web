@@ -1,8 +1,8 @@
-package com.hotmail.ch.leon.familymedia.model;
+package com.hotmail.ch.leon.familymedia.mvc.model;
 
 import java.util.List;
 
-import com.hotmail.ch.leon.familymedia.bean.VideoBean;
+import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
 
 public interface VideoModel {
 

@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.bean;
+package com.hotmail.ch.leon.familymedia.mvc.bean;
 
 public class ResponseBean {
 	/** status */
