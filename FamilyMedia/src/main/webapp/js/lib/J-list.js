@@ -29,7 +29,7 @@ function makeJlist(obj, res, jlistParam) {
 			}
 		});
 
-		txt = txt + '<div class="Jlist_row">' + row + "<div name='children'></div></div>";
+		txt = txt + '<li class="Jlist_row"><div class="Jlist_main">' + row + "</div><ul class='Jlist_children'></ul></li>";
 	});
 
 	obj.innerHTML = txt;

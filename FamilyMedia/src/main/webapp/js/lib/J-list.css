@@ -1,14 +1,18 @@
 
 /* 行  */
-.Jlist_row
+.Jlist_main
 {
 	height:50px;
 	font-size:20px;
-	
+}
+
+.Jlist_children
+{
+	font-size:20px;
 }
 
 /* 选中行  */
-.Jlist_row.selected
+.Jlist_main.selected
 {
 	background-color: #00d9d9;
 }

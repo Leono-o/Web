@@ -2,6 +2,7 @@ package com.hotmail.ch.leon.familymedia.logic;
 
 import java.math.BigDecimal;
 
+import com.hotmail.ch.leon.familymedia.consts.ContentType;
 import com.hotmail.ch.leon.familymedia.dao.FileDao;
 import com.hotmail.ch.leon.familymedia.dao.FolderDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.FileDTO;
@@ -18,6 +19,8 @@ public class ResouceLogic {
 		FolderDTO folderDTO = folderDao.findByid(fileDTO.getFolder());
 
 		return new FileInfoDTO(folderDTO.getUrl() + "/" + fileDTO.getUrl(), fileDTO.getName(), fileDTO.getFtype());
+		//return new FileInfoDTO("S:/H/H/EVN5WO327.mp4", "aa.mp4",ContentType.MP4.value());
+		//return new FileInfoDTO("S:/H/3g/House With A Nice View 2012 - 전망좋은 집 Full movie with English Subtitles.mp4", "aa.mp4",ContentType.MP4.value());
 
 	}
 

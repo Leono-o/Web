@@ -23,26 +23,27 @@ function showList(ele, res, success){
 	if (!success) {
 		return ;
 	}
-	makeJlist($("#Jlist")[0], res.data, jlistParam);
+	
+	makeJlist(ele[0], res.data, jlistParam);
 	
 	// [单击] 为收到的所有条目加上单击事件
-	ele.children(".Jlist_row").click(function(){
+	ele.find(".Jlist_main").click(function(){
 		if ($(this).hasClass("selected")){
-			$(ele).children(".Jlist_row").removeClass("selected");
+			$("#Jlist").find(".Jlist_main").removeClass("selected");
 		} else {
-			$(ele).children(".Jlist_row").removeClass("selected");
+			$("#Jlist").find(".Jlist_main").removeClass("selected");
 			$(this).addClass("selected");
 		}
 		
 		if ($(this).hasClass("selected")){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
-				request("GET", "/FamilyMedia/video?user="
+				request("GET", "/FamilyMedia/music?user="
 						+ $('#user').val()
 						+ "&folderid=" + $(this).children("[name='id']").first().val(),
 						null,
 						showList,
-						$(this).children("[name='children']").first());
+						$(this).parent().children(".Jlist_children").first());
 			} else {
 				let uri=makeString("/FamilyMedia/music/{$0}" , [$(this).children("[name='id']").first().val()]);
 				$("#music-payer")[0].src = uri;

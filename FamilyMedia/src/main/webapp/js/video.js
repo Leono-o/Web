@@ -26,11 +26,12 @@ function showList(ele, res, success){
 	makeJlist(ele[0], res.data, jlistParam);
 	
 	// [单击] 为收到的所有条目加上单击事件
-	ele.children(".Jlist_row").click(function(){
+	ele.find(".Jlist_main").click(function(){
 		if ($(this).hasClass("selected")){
-			$(ele).children(".Jlist_row").removeClass("selected");
+			$("#Jlist").find(".Jlist_main").removeClass("selected");
+			$(this).parent().children(".Jlist_children")[0].innerHTML = "";
 		} else {
-			$(ele).children(".Jlist_row").removeClass("selected");
+			$("#Jlist").find(".Jlist_main").removeClass("selected");
 			$(this).addClass("selected");
 		}
 		
@@ -42,7 +43,7 @@ function showList(ele, res, success){
 						+ "&folderid=" + $(this).children("[name='id']").first().val(),
 						null,
 						showList,
-						$(this).children("[name='children']").first());
+						$(this).parent().children(".Jlist_children").first());
 			} else {
 				let uri=makeString("/FamilyMedia/video/{$0}" , [$(this).children("[name='id']").first().val()]);
 				$("#video-payer")[0].src = uri;
