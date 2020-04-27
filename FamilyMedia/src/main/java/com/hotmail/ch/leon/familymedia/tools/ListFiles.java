@@ -3,8 +3,6 @@ package com.hotmail.ch.leon.familymedia.tools;
 import java.io.File;
 import java.io.IOException;
 
-import com.hotmail.ch.leon.familymedia.bean.VideoBean;
-
 public class ListFiles {
 
 	public static void main(String[] args) {
@@ -61,5 +59,6 @@ public class ListFiles {
             }
         }
     }
+    
 }
 

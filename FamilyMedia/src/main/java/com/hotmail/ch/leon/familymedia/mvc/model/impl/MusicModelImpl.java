@@ -1,24 +1,28 @@
 package com.hotmail.ch.leon.familymedia.mvc.model.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.util.StringUtils;
 
-import com.hotmail.ch.leon.familymedia.dao.FileDao;
+import com.hotmail.ch.leon.familymedia.dao.FolderDao;
 import com.hotmail.ch.leon.familymedia.dao.GroupDao;
+import com.hotmail.ch.leon.familymedia.dao.dto.FolderDTO;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
 import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
-import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
+import com.hotmail.ch.leon.familymedia.utils.FileUtil;
 
 public class MusicModelImpl implements MusicModel{
 
-	public  List<MusicBean> getList(String userName, String folderid) {
+	public  List<MusicBean> getList(String userName, String folderid) throws Exception {
 		
 		List<MusicBean> result = null;
+		final Base64.Encoder encoder = Base64.getEncoder();
 		GroupDao dao = FmBeanFactory.getDao(GroupDao.class);
 		if (StringUtils.isEmpty(folderid)) {
 			
@@ -44,14 +48,15 @@ public class MusicModelImpl implements MusicModel{
 				result.add(mb);
 			}
 			
-			FileDao fileDao = FmBeanFactory.getDao(FileDao.class);
-			List<ResourceDTO> fileList = fileDao.findListByFolderId(new BigDecimal(folderid));
-			for (ResourceDTO dto : fileList) {
+			FolderDao folderDao = FmBeanFactory.getDao(FolderDao.class);
+			FolderDTO folderDTO = folderDao.findByid(new BigDecimal(folderid));
+			
+			for (String fname : FileUtil.listDirectory(folderDTO.getUrl())) {
 				MusicBean mb = new MusicBean();
-				mb.setId(String.valueOf(dto.getId()));
-				mb.setFname(dto.getName());
-				mb.setFtype(dto.getRtype());
-				mb.setCmt(dto.getCmt());
+				String id = String.format("%s:%s", folderid, fname);
+				mb.setId(encoder.encodeToString(id.getBytes("UTF-8")));
+				mb.setFname(fname);
+				mb.setFtype(FileUtil.getExtension(fname));
 				result.add(mb);
 			}
 		}

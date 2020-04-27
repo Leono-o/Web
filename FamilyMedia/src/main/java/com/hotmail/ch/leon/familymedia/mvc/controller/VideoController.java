@@ -30,18 +30,36 @@ public class VideoController {
 	@RequestMapping(value="/video", method=RequestMethod.GET)
 	public ResponseBean listAll(
 			@RequestParam(value = "user", required = true) String user,
-			@RequestParam(value = "folderid", required = false) String folderid) {
+			@RequestParam(value = "resourceid", required = false) String resourceid)  {
 		VideoModel model = FmBeanFactory.getModel(VideoModel.class);
-    	List<VideoBean> resultBeans = model.getList(user, folderid);
-    	ResponseBean result = new ResponseBean();
-    	result.setData(resultBeans);
-    	result.setStatus("200");
-    	return result;
-    }
-
-    @RequestMapping(value="/video/{id}", method=RequestMethod.GET)
-    public void download(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
-    	FileInfoDTO finfo = ResouceLogic.getFileInfo(id) ;
+		
+		try {
+			List<VideoBean> resultBeans = model.getList(user, resourceid);
+			ResponseBean result = new ResponseBean();
+			result.setData(resultBeans);
+			result.setStatus("200");
+			return result;
+			
+		} catch (Exception e) {
+			ResponseBean result = new ResponseBean();
+			result.setStatus("400");
+			return result;
+		}
+	}
+	
+    @RequestMapping(value="/video/{resourceid}", method=RequestMethod.GET)
+    public void download(
+    		@PathVariable String resourceid,
+    		@RequestParam(value = "user", required = true) String user, 
+    		HttpServletRequest request, HttpServletResponse response) {
+    	
+    	FileInfoDTO finfo;
+		try {
+			finfo = ResouceLogic.getFileInfo(user, resourceid);
+		} catch (Exception e) {
+			response.setStatus(400);
+			return;
+		}
     	if (finfo == null) {
     		response.setStatus(HttpStatus.NOT_FOUND.value());
     		return;

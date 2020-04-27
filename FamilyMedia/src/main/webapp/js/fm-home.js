@@ -9,6 +9,7 @@ $(function(){
     	$("#btn_music").removeClass("selected");
    	 	
         $(".fm-context").load("video.html");
+        
     });
 
     // 【音乐】按钮

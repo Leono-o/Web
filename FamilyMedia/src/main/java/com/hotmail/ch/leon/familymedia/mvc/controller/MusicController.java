@@ -19,29 +19,50 @@ import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
 import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
 import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
+import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
+import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 
 
 @RestController
 public class MusicController {
 
 
-    @RequestMapping(value="/music", method=RequestMethod.GET)
-    public ResponseBean listAll(
-    		@RequestParam(value = "user", required = true) String user,
-			@RequestParam(value = "folderid", required = false) String folderid) {
-    	MusicModel model = FmBeanFactory.getModel(MusicModel.class);
-    	List<MusicBean> resultBeans = model.getList(user, folderid);
-    	ResponseBean result = new ResponseBean();
-    	result.setData(resultBeans);
-    	result.setStatus("200");
-    	return result;
-    }
+	@RequestMapping(value="/music", method=RequestMethod.GET)
+	public ResponseBean listAll(
+			@RequestParam(value = "user", required = true) String user,
+			@RequestParam(value = "resourceid", required = false) String resourceid)  {
+		MusicModel model = FmBeanFactory.getModel(MusicModel.class);
+		
+		try {
+			List<MusicBean> resultBeans = model.getList(user, resourceid);
+			ResponseBean result = new ResponseBean();
+			result.setData(resultBeans);
+			result.setStatus("200");
+			return result;
+			
+		} catch (Exception e) {
+			ResponseBean result = new ResponseBean();
+			result.setStatus("400");
+			return result;
+		}
+	}
+	
 
-    @RequestMapping(value="/music/{id}", method=RequestMethod.GET)
-    public void download(@PathVariable String id, HttpServletRequest request, HttpServletResponse response) {
-    	FileInfoDTO finfo = ResouceLogic.getFileInfo(id) ;
+    @RequestMapping(value="/music/{resourceid}", method=RequestMethod.GET)
+    public void download(
+    		@PathVariable String resourceid,
+    		@RequestParam(value = "user", required = true) String user, 
+    		HttpServletRequest request, HttpServletResponse response) {
+    	
+    	FileInfoDTO finfo;
+		try {
+			finfo = ResouceLogic.getFileInfo(user, resourceid);
+		} catch (Exception e) {
+			response.setStatus(400);
+			return;
+		}
     	if (finfo == null) {
     		response.setStatus(HttpStatus.NOT_FOUND.value());
     		return;
