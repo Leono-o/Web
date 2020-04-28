@@ -19,7 +19,7 @@
 
     <!-- 使用Web服务器提供的DB连接  -->
 	
-	<util:properties id="ds" location="file:D:/eclipse-workspace/Web/db.properties"></util:properties>
+	<util:properties id="ds" location="file:C:/Web/db.properties"></util:properties>
 	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">    
 	    <!--Connection Info-->
 	    <property name="driverClassName" value="#{ds['jdbc.driverClassName']}"/>
