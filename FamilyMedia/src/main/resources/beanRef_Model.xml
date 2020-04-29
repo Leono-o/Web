@@ -24,7 +24,7 @@
     	<property name="dataSource" ref="dataSource"/>
     </bean>
     
-    <!-- Facade 声明 -->
+    <!-- model 声明 -->
 	<bean id="model.MusicModel" class="com.hotmail.ch.leon.familymedia.mvc.model.impl.MusicModelImpl" />
 	
 	<bean id="model.VideoModel" class="com.hotmail.ch.leon.familymedia.mvc.model.impl.VideoModelImpl" />
