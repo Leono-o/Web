@@ -12,8 +12,7 @@ let jlistParam =   {
 
 $(function(){
 	freeze();
-	request("GET","/FamilyMedia/music",null,showList, $("#Jlist"));
-        
+	request("GET","/FamilyMedia/music?user=" + $('#user').val() ,null,showList, $("#Jlist"));
 });
 
 
@@ -30,6 +29,7 @@ function showList(ele, res, success){
 	ele.find(".Jlist_main").click(function(){
 		if ($(this).hasClass("selected")){
 			$("#Jlist").find(".Jlist_main").removeClass("selected");
+			$(this).parent().children(".Jlist_children")[0].innerHTML = "";
 		} else {
 			$("#Jlist").find(".Jlist_main").removeClass("selected");
 			$(this).addClass("selected");
@@ -38,17 +38,16 @@ function showList(ele, res, success){
 		if ($(this).hasClass("selected")){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
-				request("GET", "/FamilyMedia/music?user="
-						+ $('#user').val()
-						+ "&folderid=" + $(this).children("[name='id']").first().val(),
+				request("GET", 
+						makeString("/FamilyMedia/music?user={$0}&resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]),
 						null,
 						showList,
 						$(this).parent().children(".Jlist_children").first());
 			} else {
-				let uri=makeString("/FamilyMedia/music/{$0}" , [$(this).children("[name='id']").first().val()]);
+				let uri=makeString("/FamilyMedia/music/{$0}?user={$1}" , [$(this).children("[name='id']").first().val(), $('#user').val()]);
 				$("#music-payer")[0].src = uri;
 			}
 		}
 	});
-	
+
 }

@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 public class FolderDTO {
 
 	private BigDecimal id = null;
-	private BigDecimal parent = null;
 	private String url = "";
 	private String gname = "";
 	private String ftype = "";
@@ -15,12 +14,6 @@ public class FolderDTO {
 	}
 	public void setId(BigDecimal id) {
 		this.id = id;
-	}
-	public BigDecimal getParent() {
-		return parent;
-	}
-	public void setParent(BigDecimal parent) {
-		this.parent = parent;
 	}
 	public String getUrl() {
 		return url;

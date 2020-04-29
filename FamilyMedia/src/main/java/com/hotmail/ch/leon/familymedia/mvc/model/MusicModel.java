@@ -1,12 +1,11 @@
 package com.hotmail.ch.leon.familymedia.mvc.model;
 
-import java.util.List;
-
 import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
+import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
 
 public interface  MusicModel  {
 
-	public  List<MusicBean> getList(String userName, String folderid) throws Exception  ;
+	public  ResponseBean getList(String userName, String folderid) throws Exception  ;
 
 	public  MusicBean add();
 

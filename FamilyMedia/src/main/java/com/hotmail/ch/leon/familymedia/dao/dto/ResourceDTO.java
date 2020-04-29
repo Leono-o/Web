@@ -1,19 +1,17 @@
 package com.hotmail.ch.leon.familymedia.dao.dto;
 
-import java.math.BigDecimal;
-
 public class ResourceDTO {
 	
-private BigDecimal  id = null;
+private String  id = "";
 private String name  = "";
 private String rtype ="";
 private String cmt ="";
 
 
-public BigDecimal getId() {
+public String getId() {
 	return id;
 }
-public void setId(BigDecimal id) {
+public void setId(String id) {
 	this.id = id;
 }
 public String getName() {

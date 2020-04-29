@@ -15,14 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
+import com.hotmail.ch.leon.familymedia.dto.FMResponse;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
-import com.hotmail.ch.leon.familymedia.logic.ResouceLogic;
+import com.hotmail.ch.leon.familymedia.logic.ResourceLogic;
 import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
-import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
-import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 
 
 @RestController
@@ -33,19 +32,14 @@ public class MusicController {
 	public ResponseBean listAll(
 			@RequestParam(value = "user", required = true) String user,
 			@RequestParam(value = "resourceid", required = false) String resourceid)  {
+		
 		MusicModel model = FmBeanFactory.getModel(MusicModel.class);
 		
 		try {
-			List<MusicBean> resultBeans = model.getList(user, resourceid);
-			ResponseBean result = new ResponseBean();
-			result.setData(resultBeans);
-			result.setStatus("200");
-			return result;
+			return model.getList(user, resourceid);
 			
 		} catch (Exception e) {
-			ResponseBean result = new ResponseBean();
-			result.setStatus("400");
-			return result;
+			return new ResponseBean("400","wrong");
 		}
 	}
 	
@@ -58,7 +52,7 @@ public class MusicController {
     	
     	FileInfoDTO finfo;
 		try {
-			finfo = ResouceLogic.getFileInfo(user, resourceid);
+			finfo = ResourceLogic.getFileInfo(user, resourceid);
 		} catch (Exception e) {
 			response.setStatus(400);
 			return;

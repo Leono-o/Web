@@ -38,6 +38,5 @@
     
     <!-- DAO 声明 -->
     <bean id="dao.GroupDao" class="com.hotmail.ch.leon.familymedia.dao.impl.GroupDaoImpl"  />
-    <bean id="dao.FolderDao" class="com.hotmail.ch.leon.familymedia.dao.impl.FolderDaoImpl"  />
     
 </beans>

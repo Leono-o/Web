@@ -21,7 +21,7 @@ public enum ContentType {
 		
 		table.put("mp3", "audio/mp3");
 		table.put("mpg", "video/mpg");
-		table.put("mp3", "video/mpeg4");
+		table.put("mp4", "video/mpeg4");
 		table.put("m4v", "video/mpg");
 		
 		return table;
