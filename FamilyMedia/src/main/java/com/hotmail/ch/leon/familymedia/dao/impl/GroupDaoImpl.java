@@ -15,7 +15,7 @@ import com.hotmail.ch.leon.familymedia.dao.dto.FolderDTO;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
 import com.hotmail.ch.leon.familymedia.utils.FmStringUtil;
 
-public class GroupDaoImpl implements GroupDao {
+public class GroupDaoImpl extends FMDao implements GroupDao  {
 
 	@Autowired
 	private JdbcTemplate template;
@@ -23,10 +23,9 @@ public class GroupDaoImpl implements GroupDao {
 	@Override
 	public List<ResourceDTO> findFolderListByUserName(String userName, String ftype) {
 
-		String sql = "select t_group.gname, t_folder.name, t_folder.id from t_group, t_folder where t_group.name=? and t_group.gname=t_folder.gname and t_folder.ftype=?";
+		String sql = getSQL("GroupDao.findFolderListByUserName");
 
 		List<ResourceDTO> query = template.query(sql, new RowMapper<ResourceDTO>() {
-
 			// 将每行记录封装成ResourceDTO对象
 			@Override
 			public ResourceDTO mapRow(ResultSet resultSet, int i) throws SQLException {
@@ -46,7 +45,8 @@ public class GroupDaoImpl implements GroupDao {
 		
 	@Override
 	public FolderDTO findByid(String userName, BigDecimal folderid) {
-		String sql = "select t_folder.id,t_folder.url, t_folder.gname, t_folder.ftype,t_folder.name from t_group, T_folder where t_group.name=? and  T_folder.id=? and t_group.gname=t_folder.gname";
+		String sql = getSQL("GroupDao.findByid");
+		
 		Map<String, Object> map = template.queryForMap(sql, FmStringUtil.appendSpace(userName, 20), folderid);
 
 		FolderDTO dto = new FolderDTO();

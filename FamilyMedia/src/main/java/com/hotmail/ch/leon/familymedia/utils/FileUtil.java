@@ -13,8 +13,6 @@ public class FileUtil {
      */
     public static List<String> listDirectory(String path)throws IOException {
     	
-    	System.out.println("listDirectory:" + path);
-    	
     	List<String> result = new ArrayList<String>();
     	File dir = new File(path);
         if(!dir.exists())

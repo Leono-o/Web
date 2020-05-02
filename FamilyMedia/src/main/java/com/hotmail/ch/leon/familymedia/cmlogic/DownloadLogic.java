@@ -12,8 +12,6 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.util.StringUtils;
-
 import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 
 public class DownloadLogic {
