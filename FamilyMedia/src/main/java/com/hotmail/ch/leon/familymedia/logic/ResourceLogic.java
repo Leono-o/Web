@@ -19,7 +19,7 @@ import com.hotmail.ch.leon.familymedia.utils.FileUtil;
 public class ResourceLogic {
 	public static FileInfoDTO getFileInfo(String userName, String resourceid) throws Exception {
 		
-		Base64.Decoder decoder = Base64.getDecoder();
+		Base64.Decoder decoder = Base64.getUrlDecoder();
 		String[] resource = new String(decoder.decode(resourceid), "UTF-8").split(":");
 		BigDecimal folderid =new BigDecimal(resource[0]); 
 		String fileName =resource[1];
@@ -43,7 +43,7 @@ public class ResourceLogic {
 	public static ResponseBean getMember(String userName, String resourceid, String rtype) throws Exception {
 		
 		GroupDao dao = FmBeanFactory.getDao(GroupDao.class);
-		final Base64.Encoder encoder = Base64.getEncoder();
+		final Base64.Encoder encoder = Base64.getUrlEncoder();
 
 		if (StringUtils.isEmpty(resourceid)) {
 			// 没有resourceid的时候，返回顶层目录
@@ -57,7 +57,7 @@ public class ResourceLogic {
 
 		} else {
 
-			Base64.Decoder decoder = Base64.getDecoder();
+			Base64.Decoder decoder = Base64.getUrlDecoder();
 			String[] resource = new String(decoder.decode(resourceid), "UTF-8").split(":");
 			String folderid = resource[0];
 			String fileurl = "";

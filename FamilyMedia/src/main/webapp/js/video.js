@@ -42,8 +42,9 @@ function showList(ele, res, success){
 		if ($(this).hasClass("selected")){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
+				let uri=makeString("/FamilyMedia/{$0}/videos?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]);
 				request("GET", 
-						makeString("/FamilyMedia/{$0}/videos?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]),
+						uri,
 						null,
 						showList,
 						$(this).parent().children(".Jlist_children").first());

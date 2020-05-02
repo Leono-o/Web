@@ -34,6 +34,7 @@ public class VideoController {
 		try {
 			return model.getList(user, resourceid);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new ResponseBean("400","wrong");
 		}
 	}
