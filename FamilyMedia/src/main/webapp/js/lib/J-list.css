@@ -6,6 +6,11 @@
 	font-size:20px;
 }
 
+.Jlist_main:hover {
+	cursor: pointer;
+	background-color: #91e8e8;
+}
+
 .Jlist_children
 {
 	font-size:20px;
