@@ -1,8 +1,20 @@
-
 #music-context {
-	
-	width:calc(100%-15px);
-	padding-left:15px;
+	display: flex;
+	flex-direction: column;
+	flex:1;
+}
+
+#music-context audio {
+	margin-left:100px;
+	left: 50px;
+}
+
+#Jlist {
+	overflow:scroll;
+	width:100%;
+    left: 0px;
+    margin-top:30px;
+    flex:1;
 }
 
 .Jlist_row [name="ftype"]{
@@ -29,10 +41,4 @@
 	position:relative;
 	float:left;
 	margin-left:10px;
-}
-
-#music-context audio {
-	position: fixed;
-	left: 600px;
-	top: 100px;
 }

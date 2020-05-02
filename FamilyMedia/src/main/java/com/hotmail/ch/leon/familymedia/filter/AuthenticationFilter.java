@@ -34,9 +34,6 @@ public class AuthenticationFilter implements Filter {
 			chain.doFilter(request, response);
 			return;
 		}
-		
-		// 认证
-		//request.get
 
 		
 		chain.doFilter(request, response);

@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.controller;
+package com.hotmail.ch.leon.familymedia.mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

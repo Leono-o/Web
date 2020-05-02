@@ -113,7 +113,6 @@
     		<param-name>skip</param-name>
     		<param-value>false</param-value>
     	</init-param>
-    	
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>

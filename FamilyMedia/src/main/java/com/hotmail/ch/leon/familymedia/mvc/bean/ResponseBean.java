@@ -1,4 +1,4 @@
-package com.hotmail.ch.leon.familymedia.bean;
+package com.hotmail.ch.leon.familymedia.mvc.bean;
 
 public class ResponseBean {
 	/** status */
@@ -13,6 +13,24 @@ public class ResponseBean {
 	/** data */
 	private Object data = "";
 
+	
+	public ResponseBean(String status, Object data) {
+		this.status = status;
+		this.data = data;
+	}
+	
+	public ResponseBean(String status, String statusText,  Object data) {
+		this.status = status;
+		this.statusText = statusText;
+		this.data = data;
+	}
+	
+	public ResponseBean(String status, String statusText) {
+		this.status = status;
+		this.statusText = statusText;
+	}
+	
+	
 	public String getStatus() {
 		return status;
 	}
