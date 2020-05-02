@@ -1,7 +1,5 @@
 package com.hotmail.ch.leon.familymedia.mvc.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,10 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hotmail.ch.leon.familymedia.cmdto.DownloadDTO;
 import com.hotmail.ch.leon.familymedia.cmlogic.DownloadLogic;
 import com.hotmail.ch.leon.familymedia.consts.ContentType;
-import com.hotmail.ch.leon.familymedia.dto.FMResponse;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
 import com.hotmail.ch.leon.familymedia.logic.ResourceLogic;
-import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
@@ -28,26 +24,24 @@ import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
 public class MusicController {
 
 
-	@RequestMapping(value="/music", method=RequestMethod.GET)
+	@RequestMapping(value="/{user}/music", method=RequestMethod.GET)
 	public ResponseBean listAll(
-			@RequestParam(value = "user", required = true) String user,
+			@PathVariable String user,
 			@RequestParam(value = "resourceid", required = false) String resourceid)  {
 		
 		MusicModel model = FmBeanFactory.getModel(MusicModel.class);
 		
 		try {
 			return model.getList(user, resourceid);
-			
 		} catch (Exception e) {
 			return new ResponseBean("400","wrong");
 		}
 	}
-	
 
-    @RequestMapping(value="/music/{resourceid}", method=RequestMethod.GET)
+	@RequestMapping(value="/{user}/musicbyid", method=RequestMethod.GET)
     public void download(
-    		@PathVariable String resourceid,
-    		@RequestParam(value = "user", required = true) String user, 
+    		@PathVariable String user,
+    		@RequestParam(value = "resourceid", required = true) String resourceid,
     		HttpServletRequest request, HttpServletResponse response) {
     	
     	FileInfoDTO finfo;

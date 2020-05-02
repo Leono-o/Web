@@ -12,7 +12,11 @@ let jlistParam =   {
 
 $(function(){
 	freeze();
-	request("GET","/FamilyMedia/video?user=" + $('#user').val() ,null,showList, $("#Jlist"));
+	request("GET",
+			makeString("/FamilyMedia/{$0}/videos", [ $('#user').val()]),
+			null,
+			showList, 
+			$("#Jlist"));
 });
 
 
@@ -39,12 +43,12 @@ function showList(ele, res, success){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
 				request("GET", 
-						makeString("/FamilyMedia/video?user={$0}&resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]),
+						makeString("/FamilyMedia/{$0}/videos?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]),
 						null,
 						showList,
 						$(this).parent().children(".Jlist_children").first());
 			} else {
-				let uri=makeString("/FamilyMedia/video/{$0}?user={$1}" , [$(this).children("[name='id']").first().val(), $('#user').val()]);
+				let uri=makeString("/FamilyMedia/{$0}/videobyid?resourceid={$1}" , [$('#user').val(), $(this).children("[name='id']").first().val()]);
 				$("#video-payer")[0].src = uri;
 			}
 		}

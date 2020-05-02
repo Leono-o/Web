@@ -24,9 +24,9 @@ import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 public class VideoController {
 
 
-	@RequestMapping(value="/video", method=RequestMethod.GET)
+	@RequestMapping(value="/{user}/videos", method=RequestMethod.GET)
 	public ResponseBean listAll(
-			@RequestParam(value = "user", required = true) String user,
+			@PathVariable String user,
 			@RequestParam(value = "resourceid", required = false) String resourceid)  {
 		
 		VideoModel model = FmBeanFactory.getModel(VideoModel.class);
@@ -38,10 +38,10 @@ public class VideoController {
 		}
 	}
 	
-    @RequestMapping(value="/video/{resourceid}", method=RequestMethod.GET)
+    @RequestMapping(value="/{user}/videobyid", method=RequestMethod.GET)
     public void download(
-    		@PathVariable String resourceid,
-    		@RequestParam(value = "user", required = true) String user, 
+    		@PathVariable String user,
+    		@RequestParam(value = "resourceid", required = true) String resourceid,
     		HttpServletRequest request, HttpServletResponse response) {
     	
     	FileInfoDTO finfo = null;

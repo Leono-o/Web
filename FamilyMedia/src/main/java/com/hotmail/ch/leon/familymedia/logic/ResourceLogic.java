@@ -11,7 +11,6 @@ import org.springframework.util.StringUtils;
 import com.hotmail.ch.leon.familymedia.dao.GroupDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.FolderDTO;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
-import com.hotmail.ch.leon.familymedia.dto.FMResponse;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
