@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
+import com.hotmail.ch.leon.familymedia.filter.impl.MusicFileFilter;
 import com.hotmail.ch.leon.familymedia.logic.ResourceLogic;
 import com.hotmail.ch.leon.familymedia.mvc.bean.MusicBean;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
@@ -11,9 +12,11 @@ import com.hotmail.ch.leon.familymedia.mvc.model.MusicModel;
 
 public class MusicModelImpl implements MusicModel{
 
+	private static MusicFileFilter ffilter = new MusicFileFilter();
+	
 	public  ResponseBean getList(String userName, String resourceid) throws Exception {
 		
-		ResponseBean responseBean = ResourceLogic.getMember(userName, resourceid, "M");
+		ResponseBean responseBean = ResourceLogic.getMember(userName, resourceid, ffilter);
 		
 		List<ResourceDTO> resourceList = (List<ResourceDTO>)responseBean.getData();
 		
