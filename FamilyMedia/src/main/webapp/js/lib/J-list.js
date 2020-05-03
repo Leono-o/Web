@@ -34,4 +34,5 @@ function makeJlist(obj, res, jlistParam) {
 
 	obj.innerHTML = txt;
 
+	obj.style.cssText =  "list-style-type:none;";
 };
