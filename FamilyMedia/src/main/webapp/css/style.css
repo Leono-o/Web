@@ -42,7 +42,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .fm-logo {
 	position: relative;
-	width:400px;
+	width:17em;
 	float: left;
 }
 
@@ -52,9 +52,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .fm-navbar {
 	position: relative;
-	float: left;
-	top: 40px;
-	padding-left: 80;
+	float: right;
+	top: 0.01em;
+	padding-left: 2em;
 	margin: 0;
 	list-style-type: none;
 }
@@ -65,8 +65,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .fm-navbar a {
 	float: left;
-	width: 7em;
+	width: 3em;
 	text-align: center;
+	font-size: 1em;
 	text-decoration: none;
 	color: white;
 	background-color: purple;
@@ -87,17 +88,17 @@ h1, h2, h3, h4, h5, h6 {
 div .fm-login {
 	position: relative;
 	float: right;
-	top: 40px;
+	top: 0em;
 }
 
 div .title1 {
 	color: green;
-	font-size: 50px;
+	font-size: 1.5em;
 }
 
 div .title2 {
 	color: blue;
-	font-size: 20px;
+	font-size: 0.8em;
 }
 
 .hugeButton {
