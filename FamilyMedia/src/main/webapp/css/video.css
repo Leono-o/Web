@@ -16,32 +16,35 @@
     left: 0px;
     margin-top:30px;
     flex:1;
+    padding-left:5px;
 }
 
+.Jlist_row [name="ftype"] {
+	font-size: 0;
+}
 
-.Jlist_row [name="ftype"]{
-	position:relative;
-	float:left;
-	width:50px;
-	height:30px;
+.Jlist_row [name="ftype"].Jlist_DIR {
+	width:16px;
+	height:16px;
+	background-image:url("../img/small/folder.jpg");	
+}
+
+.Jlist_row [name="ftype"].Jlist_mp4 {
+	width:16px;
+	height:16px;
+	background-image:url("../img/small/video.jpg");	
 }
 
 .Jlist_row [name="fname"]{
-	position:relative;
-	float:left;
-	margin-left:10px;
-	height:40px;
+	margin-left:3px;
+	min-height:40px;
 }
 
 .Jlist_row [name="size"]{
-	position:relative;
-	float:left;
 	margin-left:10px;
 }
 
 .Jlist_row [name="cmt"]{
-	position:relative;
-	float:left;
 	margin-left:10px;
 }
 

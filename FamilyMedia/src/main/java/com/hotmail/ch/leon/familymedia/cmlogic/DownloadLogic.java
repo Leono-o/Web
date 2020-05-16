@@ -82,12 +82,18 @@ public class DownloadLogic {
                 if (bufferOut != null) {
                     bufferOut.close();
                 }
-                if (inputStream != null) {
-                    inputStream.close();
-                }
+               
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            
+			try {
+				if (inputStream != null) {
+					inputStream.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
 	}
 }

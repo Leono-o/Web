@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
+import com.hotmail.ch.leon.familymedia.filter.impl.VideoFileFilter;
 import com.hotmail.ch.leon.familymedia.logic.ResourceLogic;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.mvc.bean.VideoBean;
@@ -11,9 +12,12 @@ import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 
 public class VideoModelImpl implements VideoModel {
 
+	
+	private static VideoFileFilter ffilter = new VideoFileFilter();
+	
 	public  ResponseBean getList(String userName, String resourceid) throws Exception {
 		
-ResponseBean responseBean = ResourceLogic.getMember(userName, resourceid, "V");
+		ResponseBean responseBean = ResourceLogic.getMember(userName, resourceid, ffilter);
 		
 		List<ResourceDTO> resourceList = (List<ResourceDTO>)responseBean.getData();
 		

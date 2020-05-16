@@ -1,14 +1,29 @@
+.Jlist_row {
+	display: flex;
+	flex-direction: column;
+}
 
 /* 行  */
 .Jlist_main
 {
-	height:50px;
-	font-size:20px;
+	min-height:40px;
+	font-size:1em;
+	overflow:hidden;
+	display: flex;
+	flex-direction: row;
+}
+
+.Jlist_main:hover {
+	cursor: pointer;
+	background-color: #91e8e8;
 }
 
 .Jlist_children
 {
-	font-size:20px;
+	font-size:1em;
+	display: flex;
+	flex-direction: column;
+	padding-left:20px;
 }
 
 /* 选中行  */

@@ -12,11 +12,20 @@ import com.hotmail.ch.leon.familymedia.dao.GroupDao;
 import com.hotmail.ch.leon.familymedia.dao.dto.FolderDTO;
 import com.hotmail.ch.leon.familymedia.dao.dto.ResourceDTO;
 import com.hotmail.ch.leon.familymedia.dto.FileInfoDTO;
+import com.hotmail.ch.leon.familymedia.filter.FMFileFilter;
 import com.hotmail.ch.leon.familymedia.mvc.bean.ResponseBean;
 import com.hotmail.ch.leon.familymedia.mvc.factory.FmBeanFactory;
 import com.hotmail.ch.leon.familymedia.utils.FileUtil;
 
 public class ResourceLogic {
+	
+	/**
+	 * 根据resourceid获取文件的基本信息
+	 * @param userName 用户名 用来进行权限check
+	 * @param resourceid 
+	 * @return
+	 * @throws Exception
+	 */
 	public static FileInfoDTO getFileInfo(String userName, String resourceid) throws Exception {
 		
 		Base64.Decoder decoder = Base64.getUrlDecoder();
@@ -33,21 +42,21 @@ public class ResourceLogic {
 	}
 	
 	/**
-	 * 
-	 * @param userName
+	 * 根据resourceid取得旗下成员列表
+	 * @param userName 用户名 用来进行权限check
 	 * @param resourceid
 	 * @param rtype
 	 * @return 
 	 * @throws Exception
 	 */
-	public static ResponseBean getMember(String userName, String resourceid, String rtype) throws Exception {
+	public static ResponseBean getMember(String userName, String resourceid, FMFileFilter ffilter) throws Exception {
 		
 		GroupDao dao = FmBeanFactory.getDao(GroupDao.class);
 		final Base64.Encoder encoder = Base64.getUrlEncoder();
 
 		if (StringUtils.isEmpty(resourceid)) {
 			// 没有resourceid的时候，返回顶层目录
-			List<ResourceDTO> result = dao.findFolderListByUserName(userName, rtype);
+			List<ResourceDTO> result = dao.findFolderListByUserName(userName, ffilter.getSymbol());
 
 			for (ResourceDTO dto : result) {
 				dto.setRtype("DIR");
@@ -83,15 +92,22 @@ public class ResourceLogic {
 			List<ResourceDTO> result = new ArrayList<ResourceDTO>();
 			
 			for (String fname : fileList) {
-				ResourceDTO dto = new ResourceDTO();
-				dto.setName(fname);
-				dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
-				if ((new File(path+"/"+fname)).isDirectory()) {
+				if ((new File(path + "/" + fname)).isDirectory()) {
+					ResourceDTO dto = new ResourceDTO();
+					dto.setName(fname);
+					dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
 					dto.setRtype("DIR");
+					result.add(dto);
 				} else {
-					dto.setRtype(FileUtil.getExtension(fname));
+					String fileExtension = FileUtil.getExtension(fname);
+					if (ffilter.check(fileExtension)) {
+						ResourceDTO dto = new ResourceDTO();
+						dto.setName(FileUtil.getMain(fname));
+						dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
+						dto.setRtype(fileExtension);
+						result.add(dto);
+					}
 				}
-				result.add(dto);
 			}		
 			return new ResponseBean("200", result);
 		}

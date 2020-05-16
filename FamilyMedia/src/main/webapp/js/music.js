@@ -1,14 +1,10 @@
 
 let jlistParam =   {
-	"layout": [
-			  { "name":"id",  "field":"id", "format":"", "display":"false" },
-			  { "name":"ftype",  "field":"ftype", "format":"", "display":"true" },
-			  { "name":"fname",  "field":"fname", "format":"", "display":"true" },			  
-			  { "name":"size",  "field":"size", "format":"", "display":"true" },
-			  { "name":"cmt",  "field":"cmt", "format":"", "display":"true" }			  
-		   ],
-
-	};
+		"layout" : [ 
+			[ "id", "id", "", "", "false" ],
+			[ "ftype", "ftype", "ftype", "", "true" ],
+			[ "fname", "fname", "", "", "true" ] ]
+};
 
 $(function(){
 	freeze();
@@ -42,13 +38,15 @@ function showList(ele, res, success){
 		if ($(this).hasClass("selected")){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
+				let uri=makeString("/FamilyMedia/{$0}/music?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]);
 				request("GET", 
-						makeString("/FamilyMedia/{$0}/music?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]),
+						uri,
 						null,
 						showList,
 						$(this).parent().children(".Jlist_children").first());
 			} else {
 				let uri=makeString("/FamilyMedia/{$0}/musicbyid?resourceid={$1}" , [$('#user').val(), $(this).children("[name='id']").first().val()]);
+				$("#music-payer")[0].src = uri;
 			}
 		}
 	});
