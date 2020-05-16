@@ -94,7 +94,7 @@ public class ResourceLogic {
 			for (String fname : fileList) {
 				if ((new File(path + "/" + fname)).isDirectory()) {
 					ResourceDTO dto = new ResourceDTO();
-					dto.setName(FileUtil.getMain(fname));
+					dto.setName(fname);
 					dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
 					dto.setRtype("DIR");
 					result.add(dto);
