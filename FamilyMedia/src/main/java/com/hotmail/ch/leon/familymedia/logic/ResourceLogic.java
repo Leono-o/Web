@@ -94,7 +94,7 @@ public class ResourceLogic {
 			for (String fname : fileList) {
 				if ((new File(path + "/" + fname)).isDirectory()) {
 					ResourceDTO dto = new ResourceDTO();
-					dto.setName(fname);
+					dto.setName(FileUtil.getMain(fname));
 					dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
 					dto.setRtype("DIR");
 					result.add(dto);
@@ -102,7 +102,7 @@ public class ResourceLogic {
 					String fileExtension = FileUtil.getExtension(fname);
 					if (ffilter.check(fileExtension)) {
 						ResourceDTO dto = new ResourceDTO();
-						dto.setName(fname);
+						dto.setName(FileUtil.getMain(fname));
 						dto.setId(encoder.encodeToString((resourceString + fname).getBytes("UTF-8")));
 						dto.setRtype(fileExtension);
 						result.add(dto);

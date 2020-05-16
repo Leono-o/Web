@@ -41,5 +41,19 @@ public class FileUtil {
     	return fname.substring(fname.lastIndexOf(".") + 1).toLowerCase();
     }
     
+    /**
+     * 获取文件名主名
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public static String getMain (String fname) {
+    	int n = fname.lastIndexOf(".");
+    	if (n >=0) {
+    		return fname.substring(0, fname.lastIndexOf("."));
+    	}
+    	return fname;
+    }
+    
 }
 

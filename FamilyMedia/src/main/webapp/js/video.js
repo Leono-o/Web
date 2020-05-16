@@ -1,14 +1,10 @@
 
 let jlistParam =   {
-	"layout": [
-			  { "name":"id",  "field":"id", "format":"", "display":"false" },
-			  { "name":"ftype",  "field":"ftype", "format":"", "display":"true" },
-			  { "name":"fname",  "field":"fname", "format":"", "display":"true" },			  
-			  { "name":"size",  "field":"size", "format":"", "display":"true" },
-			  { "name":"cmt",  "field":"cmt", "format":"", "display":"true" }			  
-		   ],
-
-	};
+	"layout" : [ 
+			[ "id", "id", "", "", "false" ],
+			[ "ftype", "ftype", "ftype", "", "true" ],
+			[ "fname", "fname", "", "", "true" ] ]
+};
 
 $(function(){
 	freeze();
