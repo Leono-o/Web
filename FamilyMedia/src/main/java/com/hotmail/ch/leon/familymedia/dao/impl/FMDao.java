@@ -4,20 +4,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-import org.springframework.util.StringUtils;
-
-import com.hotmail.ch.leon.familymedia.consts.Consts;
-
 public class FMDao {
 	
 	static Properties pro =loadProperties("sql.properties");
-	static Properties pro_dev = loadProperties("sql_dev.properties");
 	
 	private static Properties loadProperties(String propertiesFile) {
 		Properties pro = null;
 		InputStream in = null;
 		try {
-			in = FMDao.class.getResourceAsStream(propertiesFile);
+			in = FMDao.class.getClassLoader().getResourceAsStream(propertiesFile);
 			pro = new Properties();
 			pro.load(in);
 			
@@ -38,13 +33,6 @@ public class FMDao {
 	}
 	
 	public static String getSQL(String sqlId) {
-		
-		if (Consts.DEV_MODE) {
-			String value = pro_dev.getProperty(sqlId);
-			if (!StringUtils.isEmpty(value)) {
-				return value;
-			}
-		}
 		
 		return pro.getProperty(sqlId);
 		
