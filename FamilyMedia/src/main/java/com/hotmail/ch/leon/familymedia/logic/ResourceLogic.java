@@ -4,6 +4,8 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.util.StringUtils;
@@ -109,6 +111,18 @@ public class ResourceLogic {
 					}
 				}
 			}		
+			Collections.sort(result, new Comparator<ResourceDTO>() {
+				@Override
+				public int compare(ResourceDTO o1, ResourceDTO o2) {
+					if ("DIR".equals(o1.getRtype()) && !"DIR".equals(o2.getRtype())) {
+						return -1;
+					} else if ("DIR".equals(o2.getRtype()) && !"DIR".equals(o1.getRtype())) {
+						return 1;
+					}
+
+					return o1.getName().compareTo(o2.getName());
+				}
+			});
 			return new ResponseBean("200", result);
 		}
 	}

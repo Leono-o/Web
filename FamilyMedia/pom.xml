@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
  
   <properties>
+  		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- springframe 版本控制 -->
         <spring.version>4.1.6.RELEASE</spring.version>
     </properties>

@@ -37,6 +37,7 @@
 .Jlist_row [name="fname"]{
 	margin-left:10px;
 	min-height:40px;
+	word-break:break-all;
 }
 
 .Jlist_row [name="size"]{
