@@ -9,7 +9,7 @@ let jlistParam =   {
 $(function(){
 	freeze();
 	request("GET",
-			makeString("/FamilyMedia/{$0}/videos", [ $('#user').val()]),
+			makeString("/FamilyMedia/rs/{$0}/videos", [ $('#user').val()]),
 			null,
 			showList, 
 			$("#Jlist"));
@@ -38,14 +38,14 @@ function showList(ele, res, success){
 		if ($(this).hasClass("selected")){
 			if ($(this).children("[name='ftype']").first().text() === "DIR") {
 				freeze();
-				let uri=makeString("/FamilyMedia/{$0}/videos?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]);
+				let uri=makeString("/FamilyMedia/rs/{$0}/videos?resourceid={$1}", [ $('#user').val(), $(this).children("[name='id']").first().val()]);
 				request("GET", 
 						uri,
 						null,
 						showList,
 						$(this).parent().children(".Jlist_children").first());
 			} else {
-				let uri=makeString("/FamilyMedia/{$0}/videobyid?resourceid={$1}" , [$('#user').val(), $(this).children("[name='id']").first().val()]);
+				let uri=makeString("/FamilyMedia/rs/{$0}/videobyid?resourceid={$1}" , [$('#user').val(), $(this).children("[name='id']").first().val()]);
 				$("#video-payer")[0].src = uri;
 			}
 		}
