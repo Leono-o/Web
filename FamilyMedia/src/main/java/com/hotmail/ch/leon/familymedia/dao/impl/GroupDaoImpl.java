@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -47,8 +48,13 @@ public class GroupDaoImpl extends FMDao implements GroupDao  {
 	public FolderDTO findByid(String userName, BigDecimal folderid) {
 		String sql = getSQL("GroupDao.findByid");
 		
-		Map<String, Object> map = template.queryForMap(sql, FmStringUtil.appendSpace(userName, 20), folderid);
-
+		Map<String, Object> map = null;
+		try {
+			map = template.queryForMap(sql, FmStringUtil.appendSpace(userName, 20), folderid);
+		} catch (EmptyResultDataAccessException e ) {
+			return null;
+		}
+		
 		FolderDTO dto = new FolderDTO();
 		dto.setId((BigDecimal) map.get("id"));
 		dto.setUrl(FmStringUtil.trim((String) map.get("url")));

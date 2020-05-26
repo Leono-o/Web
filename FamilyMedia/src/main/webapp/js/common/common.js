@@ -7,13 +7,26 @@ function ease() {
 }
 
 
-function request(method, uil, obj, func, ele) {
+function request(method, url, obj, func, ele) {
+	
+	let requestUrl = url;
+	
+	if (requestUrl.indexOf("&user=")>0 || requestUrl.indexOf("?user=")>0){
+		// do nothing
+	} else {
+		if (requestUrl.indexOf("?") >0){
+			requestUrl = requestUrl + "&user=" + $('#user').val();
+		} else {
+			requestUrl = requestUrl + "?user=" + $('#user').val();
+		}
+	}
+	
 	$.ajax({
 	    async: false, //同步false
 	    type: method,
 	    dataType: "json", //json text 服务器返回的数据类型
 	    contentType: "application/json",
-	    url: "" + uil,
+	    url: requestUrl,
 	    data: {
 	        object: JSON.stringify(obj)
 	    },
@@ -21,7 +34,22 @@ function request(method, uil, obj, func, ele) {
 	    	func(ele,result , true);
 	    },
 	    error: function (result) {
-	    	func(ele,result, false);
+	    	if (result.status === 401){
+	    		let pswd = prompt("请输入密码：");
+	    		if (pswd == null){
+	    			ease();
+	    		} else {
+	    			let n = requestUrl.indexOf("&token=");
+	    			if (n>0){
+	    				requestUrl = requestUrl.slice(0,n) +"&token=" + pswd;
+	    			} else {
+	    				requestUrl = requestUrl +"&token=" + pswd;
+	    			}
+	    			request(method, requestUrl, obj, func, ele);
+	    		}
+	    	} else{
+	    		func(ele,result, false);
+	    	}
 	    }
 	});
 }

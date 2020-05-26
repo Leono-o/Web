@@ -21,6 +21,7 @@ import com.hotmail.ch.leon.familymedia.mvc.model.VideoModel;
 
 
 @RestController
+@RequestMapping(value="/rs")
 public class VideoController {
 
 
