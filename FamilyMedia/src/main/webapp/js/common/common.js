@@ -35,18 +35,32 @@ function request(method, url, obj, func, ele) {
 	    },
 	    error: function (result) {
 	    	if (result.status === 401){
-	    		let pswd = prompt("请输入密码：");
-	    		if (pswd == null){
+	    		
+	    		$("#pswdDialog_yes").click(function(){
+	    			
+	    			let pswd =  $('#pswd').val();
+	    			$('#pswdDialog')[0].close();
+	    			
+		    		if (pswd == ""){
+		    			ease();
+		    		} else {
+		    			let n = requestUrl.indexOf("&token=");
+		    			if (n>0){
+		    				requestUrl = requestUrl.slice(0,n) +"&token=" + pswd;
+		    			} else {
+		    				requestUrl = requestUrl +"&token=" + pswd;
+		    			}
+		    			request(method, requestUrl, obj, func, ele);
+		    		}
+	    	    });
+	    		
+	    		$("#pswdDialog_no").click(function(){
+	    			$('#pswdDialog')[0].close();
 	    			ease();
-	    		} else {
-	    			let n = requestUrl.indexOf("&token=");
-	    			if (n>0){
-	    				requestUrl = requestUrl.slice(0,n) +"&token=" + pswd;
-	    			} else {
-	    				requestUrl = requestUrl +"&token=" + pswd;
-	    			}
-	    			request(method, requestUrl, obj, func, ele);
-	    		}
+	    	    });
+	    		
+	    		$('#pswdDialog')[0].showModal();
+	    		
 	    	} else{
 	    		func(ele,result, false);
 	    	}
