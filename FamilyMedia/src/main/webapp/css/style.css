@@ -119,3 +119,7 @@ div .title2 {
 	background-color: black;
 	opacity: .10;
 }
+
+.hidden {
+	display:none;
+}

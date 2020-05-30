@@ -81,6 +81,7 @@ function request(method, url, obj, func, ele) {
 			    			ease();
 			    	    });
 			    		
+			    		$('#pswdDialog').removeClass("hidden");
 			    		$('#pswdDialog')[0].showModal();
 	    			}
 		    	},1);
