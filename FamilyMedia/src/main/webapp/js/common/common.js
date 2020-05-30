@@ -36,30 +36,37 @@ function request(method, url, obj, func, ele) {
 	    error: function (result) {
 	    	if (result.status === 401){
 	    		
-	    		$("#pswdDialog_yes").click(function(){
+	    		// 使用延时的目的是防止递归调用
+	    		setTimeout(function(){
 	    			
-	    			let pswd =  $('#pswd').val();
-	    			$('#pswdDialog')[0].close();
-	    			
-		    		if (pswd == ""){
+	    			// 不能使用prompt()，手机端取不到返回值
+		    		$("#pswdDialog_yes").click(function(){
+		    			
+		    			let pswd =  $('#pswd').val();
+		    			$('#pswd').val("");
+		    			$('#pswdDialog')[0].close();
+		    			
+			    		if (pswd == ""){
+			    			ease();
+			    		} else {
+			    			let n = requestUrl.indexOf("&token=");
+			    			if (n>0){
+			    				requestUrl = requestUrl.slice(0,n) +"&token=" + pswd;
+			    			} else {
+			    				requestUrl = requestUrl +"&token=" + pswd;
+			    			}
+			    			request(method, requestUrl, obj, func, ele);
+			    		}
+		    	    });
+		    		
+		    		$("#pswdDialog_no").click(function(){
+		    			$('#pswd').val("");
+		    			$('#pswdDialog')[0].close();
 		    			ease();
-		    		} else {
-		    			let n = requestUrl.indexOf("&token=");
-		    			if (n>0){
-		    				requestUrl = requestUrl.slice(0,n) +"&token=" + pswd;
-		    			} else {
-		    				requestUrl = requestUrl +"&token=" + pswd;
-		    			}
-		    			request(method, requestUrl, obj, func, ele);
-		    		}
-	    	    });
-	    		
-	    		$("#pswdDialog_no").click(function(){
-	    			$('#pswdDialog')[0].close();
-	    			ease();
-	    	    });
-	    		
-	    		$('#pswdDialog')[0].showModal();
+		    	    });
+		    		
+		    		$('#pswdDialog')[0].showModal();
+	    		},1);
 	    		
 	    	} else{
 	    		func(ele,result, false);
